@@ -1,4 +1,6 @@
 
+#!/usr/bin/node
+
 const { dict } = require('./101-data');
 
 // Create a new dictionary of user ids by occurrence
