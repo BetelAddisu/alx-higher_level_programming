@@ -1,13 +1,17 @@
-#!/usr/bin/node
 
-const dict = require('./101-data').dict;
-const newDict = {};
+const { dict } = require('./101-data');
 
-Object.keys(dict).map(function (key) {
-  if (!Array.isArray(newDict[dict[key]])) {
-    newDict[dict[key]] = [];
+// Create a new dictionary of user ids by occurrence
+const occurrencesById = {};
+for (const userId in dict) {
+  const occurrences = dict[userId];
+  
+  if (occurrences in occurrencesById) {
+    occurrencesById[occurrences].push(userId);
+  } else {
+    occurrencesById[occurrences] = [userId];
   }
-  newDict[dict[key]].push(key);
-});
+}
 
-console.log(newDict);
+// Print the new dictionary
+console.log(occurrencesById);
